@@ -2,26 +2,22 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
+        System.out.print("Enter any number: ");
         int num = sc.nextInt();
-        int choice = 0;
-        if (num > 0) {
-            choice = 1;
-        } else if (num < 0) {
-            choice = 2;
-        } else {
-            choice = 0;
-        }
-        switch (choice) {
-            case 1:
+        System.out.print("Enter the sign of the number : ");
+        char sign = sc.next().charAt(0);
+        switch (sign) {
+            case '+':
                 System.out.println("Positive");
                 break;
-            case 2:
+            case '-':
                 System.out.println("Negative");
                 break;
-            case 0:
+            case '0':
                 System.out.println("Zero");
                 break;
+            default:
+                System.out.println("Invalid sign input");
         }
     }
 }
