@@ -1,0 +1,16 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        if (num >= -9 && num <= 9)
+            System.out.println("Single digit");
+        else if ((num >= -99 && num <= -10) || (num >= 10 && num <= 99))
+            System.out.println("Two digit");
+        else if ((num >= -999 && num <= -100) || (num >= 100 && num <= 999))
+            System.out.println("Three digit");
+        else
+            System.out.println("More than 3 digits");
+    }
+}
