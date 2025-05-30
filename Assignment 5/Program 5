@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+class Test {
+    int num;
+
+    Test(int n) {
+        num = n;
+    }
+
+    int getReverse() {
+        int rev = 0;
+        int temp = num;
+        while (temp != 0) {
+            rev = rev * 10 + temp % 10;
+            temp = temp / 10;
+        }
+        return rev;
+    }
+}
+
+public class Program5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number to reverse: ");
+        int n = sc.nextInt();
+
+        Test t = new Test(n);
+        System.out.println("Reverse: " + t.getReverse());
+      
+    }
+}
