@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    int subtract(int a, int b) {
+        return a - b;
+    }
+
+    double subtract(double a, double b) {
+        return a - b;
+    }
+
+    int subtract(int a, int b, int c) {
+        return a - b - c;
+    }
+
+    int multiply(int a, int b) {
+        return a * b;
+    }
+
+    double multiply(double a, double b) {
+        return a * b;
+    }
+
+    int multiply(int a, int b, int c) {
+        return a * b * c;
+    }
+
+    int divide(int a, int b) {
+        return a / b;
+    }
+
+    double divide(double a, double b) {
+        return a / b;
+    }
+
+    int divide(int a, int b, int c) {
+        return a / b / c;
+    }
+}
+
+public class program1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Calculator calc = new Calculator();
+
+        System.out.print("Enter two integers: ");
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+
+        System.out.print("Enter two doubles: ");
+        double dx = sc.nextDouble();
+        double dy = sc.nextDouble();
+
+        System.out.print("Enter three integers: ");
+        int a = sc.nextInt(), b = sc.nextInt(), c = sc.nextInt();
+
+        System.out.println("Add int: " + calc.add(x, y));
+        System.out.println("Add double: " + calc.add(dx, dy));
+        System.out.println("Add three ints: " + calc.add(a, b, c));
+
+        System.out.println("Subtract int: " + calc.subtract(x, y));
+        System.out.println("Subtract double: " + calc.subtract(dx, dy));
+        System.out.println("Subtract three ints: " + calc.subtract(a, b, c));
+
+        System.out.println("Multiply int: " + calc.multiply(x, y));
+        System.out.println("Multiply double: " + calc.multiply(dx, dy));
+        System.out.println("Multiply three ints: " + calc.multiply(a, b, c));
+
+        System.out.println("Divide int: " + calc.divide(x, y));
+        System.out.println("Divide double: " + calc.divide(dx, dy));
+        System.out.println("Divide three ints: " + calc.divide(a, b, c));
+    }
+}
