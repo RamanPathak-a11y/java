@@ -24,15 +24,13 @@ class Cow extends Animal {
 
 public class Program5 {
     public static void main(String[] args) {
-        Animal a;
+        Animal dog  = new Dog();
+        dog.makeSound();
         
-        a = new Dog();
-        a.makeSound();
+        Animal cat = new Cat();
+        cat.makeSound();
         
-        a = new Cat();
-        a.makeSound();
-        
-        a = new Cow();
-        a.makeSound();
+    Animal cow = new Cow();
+        cow.makeSound();
     }
 }
