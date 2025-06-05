@@ -1,0 +1,53 @@
+class Account {
+    private int accountNumber;
+    protected double balance;
+
+    Account(int accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class SavingsAccount extends Account {
+    double interestRate;
+
+    SavingsAccount(int accNo, double bal, double rate) {
+        super(accNo, bal);
+        this.interestRate = rate;
+    }
+
+    void display() {
+        System.out.println("Savings Account Number: " + getAccountNumber() + ", Balance: " + getBalance() + ", Interest Rate: " + interestRate);
+    }
+}
+
+class CurrentAccount extends Account {
+    double overdraftLimit;
+
+    CurrentAccount(int accNo, double bal, double limit) {
+        super(accNo, bal);
+        this.overdraftLimit = limit;
+    }
+
+    void display() {
+        System.out.println("Current Account Number: " + getAccountNumber() + ", Balance: " + getBalance() + ", Overdraft Limit: " + overdraftLimit);
+    }
+}
+
+public class Program6 {
+    public static void main(String[] args) {
+        SavingsAccount sa = new SavingsAccount(1001, 20000, 5.5);
+        CurrentAccount ca = new CurrentAccount(1002, 30000, 10000);
+        
+        sa.display();
+        ca.display();
+    }
+}
