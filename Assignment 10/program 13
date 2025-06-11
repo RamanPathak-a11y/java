@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Program13 {
+    public static void main(String[] args) {
+        int[][] arr = new int[3][3];
+        Scanner sc = new Scanner(System.in);
+        int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) {
+                arr[i][j] = sc.nextInt();
+                if (arr[i][j] > max) max = arr[i][j];
+                if (arr[i][j] < min) min = arr[i][j];
+            }
+
+        System.out.println("Max = " + max);
+        System.out.println("Min = " + min);
+    }
+}
