@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Enter an integer: ");
+            int number = Integer.parseInt(sc.nextLine());
+            if (number < 0) {
+                System.out.println("Cannot calculate square root of negative number.");
+            } else {
+                double sqrt = Math.sqrt(number);
+                System.out.println("Square root: " + sqrt);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format.");
+        } finally {
+            System.out.println("Program finished.");
+        }
+    }
+}
