@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+class Employee {
+    int empId;
+    String name;
+    double salary;
+
+    Employee(int empId) {
+        this(empId, "Unknown", 0.0);
+    }
+
+    Employee(int empId, String name) {
+        this(empId, name, 0.0);
+    }
+
+    Employee(int empId, String name, double salary) {
+        this.empId = empId;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    void display() {
+        System.out.println("ID: " + empId + ", Name: " + name + ", Salary: $" + salary);
+    }
+}
+
+public class program6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Employee e1 = new Employee(sc.nextInt());
+        sc.nextLine();
+        Employee e2 = new Employee(sc.nextInt(), sc.nextLine());
+        Employee e3 = new Employee(sc.nextInt(), sc.nextLine(), sc.nextDouble());
+
+        e1.display();
+        e2.display();
+        e3.display();
+    }
+}

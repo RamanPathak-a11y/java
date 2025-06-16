@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class Employee {
+    int empID;
+    String empName;
+    int deptID;
+    String bloodGroup;
+    double salary;
+
+    Employee(int id, String name, int dept, String bg, double sal) {
+        empID = id;
+        empName = name;
+        deptID = dept;
+        bloodGroup = bg;
+        salary = sal;
+    }
+
+    void printEmployeeDetails() {
+        System.out.println("Employee ID: " + empID);
+        System.out.println("Name: " + empName);
+        System.out.println("Department ID: " + deptID);
+        System.out.println("Blood Group: " + bloodGroup);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class Program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Employee ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Department ID: ");
+        int dept = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter Blood Group: ");
+        String bg = sc.nextLine();
+        System.out.print("Enter Salary: ");
+        double sal = sc.nextDouble();
+
+        Employee e = new Employee(id, name, dept, bg, sal);
+        e.printEmployeeDetails();
+       
+    }
+}

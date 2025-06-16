@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+class Area {
+    double calculate(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    double calculate(double length, double width) {
+        return length * width;
+    }
+
+    double calculate(double base, double height, boolean isTriangle) {
+        return 0.5 * base * height;
+    }
+}
+
+public class program3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Area area = new Area();
+
+        System.out.print("Enter radius: ");
+        double r = sc.nextDouble();
+
+        System.out.print("Enter rectangle length and width: ");
+        double l = sc.nextDouble(), w = sc.nextDouble();
+
+        System.out.print("Enter triangle base and height: ");
+        double b = sc.nextDouble(), h = sc.nextDouble();
+
+        System.out.println("Circle area: " + area.calculate(r));
+        System.out.println("Rectangle area: " + area.calculate(l, w));
+        System.out.println("Triangle area: " + area.calculate(b, h, true));
+    }
+}

@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Program6 {
+    static int balance;
+
+    public static void deposit(int amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", Balance: " + balance);
+    }
+
+    public static void withdraw(int amount) throws Exception {
+        if (amount > balance) {
+            throw new Exception("Insufficient balance.");
+        }
+        balance -= amount;
+        System.out.println("Withdrawn: " + amount + ", Balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter initial balance: ");
+            balance = sc.nextInt();
+
+            System.out.print("Enter amount to deposit: ");
+            int depositAmount = sc.nextInt();
+            deposit(depositAmount);
+
+            System.out.print("Enter amount to withdraw: ");
+            int withdrawAmount = sc.nextInt();
+            withdraw(withdrawAmount);
+        } catch (Exception e) {
+            System.out.println("Transaction failed: " + e.getMessage());
+        }
+
+        
+    }
+}

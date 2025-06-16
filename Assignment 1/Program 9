@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double r = sc.nextDouble();
+        double base = sc.nextDouble();
+        double height = sc.nextDouble();
+        double areaCircle = 3.14 * r * r;
+        double areaTriangle = 0.5 * base * height;
+        System.out.println(areaCircle);
+        System.out.println(areaTriangle);
+    }
+}
