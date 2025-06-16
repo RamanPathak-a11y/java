@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+class UniversityMember {
+    String name;
+    int id;
+
+    UniversityMember(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+}
+
+class Student extends UniversityMember {
+    String course;
+
+    Student(String name, int id, String course) {
+        super(name, id);
+        this.course = course;
+    }
+
+    void display() {
+        System.out.println("Student - Name: " + name + ", ID: " + id + ", Course: " + course);
+    }
+}
+
+class Professor extends UniversityMember {
+    String subject;
+
+    Professor(String name, int id, String subject) {
+        super(name, id);
+        this.subject = subject;
+    }
+
+    void display() {
+        System.out.println("Professor - Name: " + name + ", ID: " + id + ", Subject: " + subject);
+    }
+}
+
+class Staff extends UniversityMember {
+    String role;
+
+    Staff(String name, int id, String role) {
+        super(name, id);
+        this.role = role;
+    }
+
+    void display() {
+        System.out.println("Staff - Name: " + name + ", ID: " + id + ", Role: " + role);
+    }
+}
+
+public class Program3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter Student name, id, course: ");
+        Student s = new Student(sc.next(), sc.nextInt(), sc.next());
+        
+        System.out.print("Enter Professor name, id, subject: ");
+        Professor p = new Professor(sc.next(), sc.nextInt(), sc.next());
+        
+        System.out.print("Enter Staff name, id, role: ");
+        Staff st = new Staff(sc.next(), sc.nextInt(), sc.next());
+        
+        s.display();
+        p.display();
+        st.display();
+    }
+}

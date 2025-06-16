@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+interface PaymentGateway {
+    void pay(int amount);
+    void refund(int amount);
+}
+
+class CreditCardPayment implements PaymentGateway {
+    public void pay(int amount) {
+        System.out.println("Credit Card Payment of Rs." + amount);
+    }
+
+    public void refund(int amount) {
+        System.out.println("Credit Card Refund of Rs." + amount);
+    }
+}
+
+class UPIPayment implements PaymentGateway {
+    public void pay(int amount) {
+        System.out.println("UPI Payment of Rs." + amount);
+    }
+
+    public void refund(int amount) {
+        System.out.println("UPI Refund of Rs." + amount);
+    }
+}
+
+public class program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        PaymentGateway payment;
+
+        System.out.println("Enter amount:");
+        int amt = sc.nextInt();
+
+        payment = new CreditCardPayment();
+        payment.pay(amt);
+        payment.refund(amt / 2);
+
+        payment = new UPIPayment();
+        payment.pay(amt);
+        payment.refund(amt / 3);
+    }
+}

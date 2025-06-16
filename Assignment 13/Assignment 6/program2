@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int age;
+    String department;
+
+    Student() {
+        this("Unknown", 0, "Undeclared");
+    }
+
+    Student(String name) {
+        this(name, 0, "Undeclared");
+    }
+
+    Student(String name, int age) {
+        this(name, age, "Undeclared");
+    }
+
+    Student(String name, int age, String dept) {
+        this.name = name;
+        this.age = age;
+        this.department = dept;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Department: " + department);
+    }
+}
+
+public class program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Student s1 = new Student();
+        Student s2 = new Student(sc.nextLine());
+        Student s3 = new Student(sc.nextLine(), sc.nextInt());
+        sc.nextLine(); 
+        Student s4 = new Student(sc.nextLine(), sc.nextInt(), sc.next());
+
+        s1.display();
+        s2.display();
+        s3.display();
+        s4.display();
+    }
+}

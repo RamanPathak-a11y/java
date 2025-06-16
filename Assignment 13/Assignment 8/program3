@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+interface PollutionControl {
+    void checkEmission();
+}
+
+abstract class Vehicle {
+    String brand;
+
+    Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    void start() {
+        System.out.println(brand + " vehicle is starting.");
+    }
+
+    abstract void fuelType();
+}
+
+class Car extends Vehicle implements PollutionControl {
+    Car(String brand) {
+        super(brand);
+    }
+
+    public void checkEmission() {
+        System.out.println(brand + " car emission checked.");
+    }
+
+    void fuelType() {
+        System.out.println(brand + " car uses petrol.");
+    }
+}
+
+class Bike extends Vehicle implements PollutionControl {
+    Bike(String brand) {
+        super(brand);
+    }
+
+    public void checkEmission() {
+        System.out.println(brand + " bike emission checked.");
+    }
+
+    void fuelType() {
+        System.out.println(brand + " bike uses diesel.");
+    }
+}
+
+public class program3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String brand1 = sc.nextLine();
+        String brand2 = sc.nextLine();
+
+        Vehicle car = new Car(brand1);
+        Vehicle bike = new Bike(brand2);
+
+        car.start();
+        car.fuelType();
+        ((PollutionControl)car).checkEmission();
+
+        bike.start();
+        bike.fuelType();
+        ((PollutionControl)bike).checkEmission();
+    }
+}
