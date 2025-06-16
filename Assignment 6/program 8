@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class Movie {
+    String title;
+    String genre;
+    int releaseYear;
+
+    Movie(String title) {
+        this(title, "Unknown", 0);
+    }
+
+    Movie(String title, String genre) {
+        this(title, genre, 0);
+    }
+
+    Movie(String title, String genre, int year) {
+        this.title = title;
+        this.genre = genre;
+        this.releaseYear = year;
+    }
+
+    void display() {
+        System.out.println("Title: " + title + ", Genre: " + genre + ", Year: " + releaseYear);
+    }
+}
+
+public class program8 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Movie m1 = new Movie(sc.nextLine());
+        Movie m2 = new Movie(sc.nextLine(), sc.nextLine());
+        Movie m3 = new Movie(sc.nextLine(), sc.nextLine(), sc.nextInt());
+
+        m1.display();
+        m2.display();
+        m3.display();
+    }
+}
