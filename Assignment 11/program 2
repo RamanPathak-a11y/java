@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String sentence = sc.nextLine();
+        String[] words = sentence.split(" ");
+
+        for (String word : words) {
+            char first = Character.toLowerCase(word.charAt(0));
+            if (first == 'a' || first == 'e' || first == 'i' || first == 'o' || first == 'u')
+                System.out.println(word);
+        }
+    }
+}

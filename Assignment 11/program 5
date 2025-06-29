@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Program5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String sentence = sc.nextLine();
+        String catName = sc.nextLine();
+        String dogName = sc.nextLine();
+
+        String updated = sentence.replaceAll("cat", catName).replaceAll("dog", dogName);
+        System.out.println("Updated sentence: " + updated);
+    }
+}

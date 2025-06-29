@@ -1,0 +1,62 @@
+public class Program11 {
+    public static void main(String[] args) {
+        
+        // Pattern 1: Increasing Triangle
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 2: Repeat Increasing Triangle
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 3: Decreasing Triangle
+        for (int i = 4; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 4: Decreasing Triangle Repeated
+        for (int i = 4; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 5: Number Increasing Triangle
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 6: Number Decreasing Triangle
+        for (int i = 5; i >= 1; i--) {
+            for (int j = i; j >= 1; j--) System.out.print(j + " ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 7: Alphabet Increasing Triangle
+        for (char i = 'A'; i <= 'E'; i++) {
+            for (char j = 'A'; j <= i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 8: Inverted Alphabet Triangle with Indent
+        for (int i = 0; i < 5; i++) {
+            for (int s = 0; s < i * 2; s++) System.out.print(" ");
+            for (char j = 'A'; j <= 'E' - i; j++) System.out.print(j + " ");
+            System.out.println();
+        }
+  System.out.println();
+        // Pattern 9: Star Increasing then Extension
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= i; j++) System.out.print("* ");
+            System.out.println();
+        }
+        System.out.print("* ");
+        for (int i = 1; i <= 5; i++) System.out.print("* ");
+        System.out.println();
+    }
+}

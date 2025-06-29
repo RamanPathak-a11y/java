@@ -1,0 +1,44 @@
+final class University {
+    String name;
+    String location;
+
+    University(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    void display() {
+        System.out.println("University Name: " + name + ", Location: " + location);
+    }
+}
+
+//  following code will cause a COMPILATION ERROR if uncommented,
+// because 'University' is declared as final, and Java does NOT allow inheritance from final classes.
+
+// class PrivateUniversity extends University {
+//     PrivateUniversity(String name, String location) {
+//         super(name, location);
+//     }
+// }
+
+/*
+ Compilation Error Explanation:
+error: cannot inherit from final University
+class PrivateUniversity extends University {
+                                ^
+This error means the class `PrivateUniversity` cannot extend `University` 
+because `University` is marked as `final`, and final classes cannot be subclassed.
+*/
+
+public class program4 {
+    public static void main(String[] args) {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        String name = sc.nextLine();
+        String location = sc.nextLine();
+
+        University uni = new University(name, location);
+        uni.display();
+
+        System.out.println("Attempting to extend a final class results in a compilation error.");
+    }
+}

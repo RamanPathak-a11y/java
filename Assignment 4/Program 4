@@ -1,0 +1,39 @@
+class Flight {
+    private String flightNumber;
+    private String destination;
+    private int distance;
+    private int fuel;
+
+    private void calFuel() {
+        if (distance <= 1000) {
+            fuel = 500;
+        } else if (distance <= 2000) {
+            fuel = 1100;
+        } else {
+            fuel = 2200;
+        }
+    }
+
+    public void feedInfo() {
+        flightNumber = "AI-101";
+        destination = "Delhi";
+        distance = 1800;
+        calFuel();
+    }
+
+    public void showInfo() {
+        System.out.println("Flight Details:");
+        System.out.println("Flight Number: " + flightNumber);
+        System.out.println("Destination: " + destination);
+        System.out.println("Distance: " + distance);
+        System.out.println("Fuel Required: " + fuel);
+    }
+}
+
+public class Program4 {
+    public static void main(String[] args) {
+        Flight f = new Flight();
+        f.feedInfo();
+        f.showInfo();
+    }
+}

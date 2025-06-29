@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+class Customer {
+    int customerId;
+    String customerName;
+
+    Customer(int customerId, String customerName) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+    }
+
+    void display() {
+        System.out.println("Customer ID: " + customerId + ", Name: " + customerName);
+    }
+}
+
+class Billing extends Customer {
+    double billAmount;
+
+    Billing(int id, String name, double amount) {
+        super(id, name);
+        this.billAmount = amount;
+    }
+
+    double calculateDiscount() {
+        return billAmount * 0.1;
+    }
+
+    void displayBill() {
+        super.display();
+        System.out.println("Bill Amount: " + billAmount + ", Discount: " + calculateDiscount());
+    }
+}
+
+public class Program4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter customer ID, name, bill amount: ");
+        int id = sc.nextInt();
+        String name = sc.next();
+        double amount = sc.nextDouble();
+
+        Billing bill = new Billing(id, name, amount);
+        bill.displayBill();
+    }
+}

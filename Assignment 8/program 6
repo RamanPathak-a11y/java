@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+interface Switchable {
+    void turnOn();
+    void turnOff();
+}
+
+interface Configurable {
+    void configure(int brightness);
+}
+
+class SmartBulb implements Switchable, Configurable {
+    public void turnOn() {
+        System.out.println("SmartBulb is ON.");
+    }
+
+    public void turnOff() {
+        System.out.println("SmartBulb is OFF.");
+    }
+
+    public void configure(int brightness) {
+        System.out.println("Brightness set to " + brightness);
+    }
+}
+
+public class program6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int brightness = sc.nextInt();
+
+        SmartBulb bulb = new SmartBulb();
+        bulb.turnOn();
+        bulb.configure(brightness);
+        bulb.turnOff();
+    }
+}

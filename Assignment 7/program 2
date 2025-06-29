@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Employee extends Person {
+    String empId, department;
+
+    Employee(String name, int age, String empId, String department) {
+        super(name, age);
+        this.empId = empId;
+        this.department = department;
+    }
+}
+
+class Salary extends Employee {
+    double basicPay, hra, da;
+
+    Salary(String name, int age, String empId, String dept, double basicPay, double hra, double da) {
+        super(name, age, empId, dept);
+        this.basicPay = basicPay;
+        this.hra = hra;
+        this.da = da;
+    }
+
+    double calculateSalary() {
+        return basicPay + hra + da;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+        System.out.println("Emp ID: " + empId + ", Dept: " + department);
+        System.out.println("Total Salary: " + calculateSalary());
+    }
+}
+
+public class Program2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter name, age, empId, department, basicPay, HRA, DA: ");
+        String name = sc.next();
+        int age = sc.nextInt();
+        String empId = sc.next();
+        String dept = sc.next();
+        double basic = sc.nextDouble();
+        double hra = sc.nextDouble();
+        double da = sc.nextDouble();
+
+        Salary s = new Salary(name, age, empId, dept, basic, hra, da);
+        s.display();
+    }
+}

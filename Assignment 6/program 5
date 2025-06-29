@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class InfoDisplay {
+    void show(int x) {
+        System.out.println("Integer: " + x);
+    }
+
+    void show(String s) {
+        System.out.println("String: " + s);
+    }
+
+    void show(String s, int x) {
+        System.out.println("String: " + s + ", Integer: " + x);
+    }
+}
+
+public class program5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        InfoDisplay display = new InfoDisplay();
+
+        display.show(sc.nextInt());
+        sc.nextLine();
+        display.show(sc.nextLine());
+        display.show(sc.nextLine(), sc.nextInt());
+    }
+}

@@ -1,0 +1,22 @@
+class Area {
+    final double PI = 3.14;
+
+    double areaOfCircle(double radius) {
+        return PI * radius * radius;
+    }
+
+    double areaOfCylinder(double radius, double height) {
+        return 2 * PI * radius * height + 2 * areaOfCircle(radius);
+    }
+}
+
+public class Program3 {
+    public static void main(String[] args) {
+        Area a = new Area();
+        double r = 5.0;
+        double h = 10.0;
+
+        System.out.printf("Area of Circle: %.2f\n", a.areaOfCircle(r));
+        System.out.printf("Area of Cylinder: %.2f\n", a.areaOfCylinder(r, h));
+    }
+}

@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+class Account {
+    private int accountNumber;
+    protected double balance;
+
+    Account(int accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class SavingsAccount extends Account {
+    double interestRate;
+
+    SavingsAccount(int accNo, double bal, double rate) {
+        super(accNo, bal);
+        this.interestRate = rate;
+    }
+
+    void display() {
+        System.out.println("Savings Account Number: " + getAccountNumber() +
+                ", Balance: " + getBalance() +
+                ", Interest Rate: " + interestRate + "%");
+    }
+}
+
+class CurrentAccount extends Account {
+    double overdraftLimit;
+
+    CurrentAccount(int accNo, double bal, double limit) {
+        super(accNo, bal);
+        this.overdraftLimit = limit;
+    }
+
+    void display() {
+        System.out.println("Current Account Number: " + getAccountNumber() +  ", Balance: " + getBalance() +   ", Overdraft Limit: " + overdraftLimit);
+    }
+}
+
+public class Program6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Savings Account details: Account Number, Balance, Interest Rate:");
+        int sAccNo = sc.nextInt();
+        double sBal = sc.nextDouble();
+        double sRate = sc.nextDouble();
+        SavingsAccount sa = new SavingsAccount(sAccNo, sBal, sRate);
+
+        System.out.println("Enter Current Account details: Account Number, Balance, Overdraft Limit:");
+        int cAccNo = sc.nextInt();
+        double cBal = sc.nextDouble();
+        double cLimit = sc.nextDouble();
+        CurrentAccount ca = new CurrentAccount(cAccNo, cBal, cLimit);
+
+        System.out.println("\n Account Details ");
+        sa.display();
+        ca.display();
+    }
+}

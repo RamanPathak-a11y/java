@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Program4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of characters: ");
+        int n = sc.nextInt();
+        char[] letters = new char[n];
+
+        System.out.println("Enter " + n + " characters :");
+        for (int i = 0; i < n; i++) {
+            letters[i] = sc.next().charAt(0);
+        }
+
+        String str = new String(letters);
+        System.out.println("Created String: " + str);
+    }
+}

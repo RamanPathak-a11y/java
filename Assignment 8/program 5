@@ -1,0 +1,35 @@
+class BankAccount {
+    final void generateAccountNumber() {
+        System.out.println("Account number generated securely.");
+    }
+}
+
+class SavingsAccount extends BankAccount {
+
+    //  following override will cause a COMPILATION ERROR if uncommented,
+    // because final methods cannot be overridden in Java.
+
+    // void generateAccountNumber() {
+    //     System.out.println("Trying to override final method.");
+    // }
+
+    /*
+    Compilation Error Explanation:
+    error: generateAccountNumber() in SavingsAccount cannot override generateAccountNumber() in BankAccount
+        void generateAccountNumber() {
+             ^
+      overridden method is final
+
+    This means `generateAccountNumber()` cannot be overridden because it is declared `final` in the superclass.
+    Java prohibits overriding of final methods to ensure consistency and avoid accidental or malicious modification.
+    */
+}
+
+public class program5 {
+    public static void main(String[] args) {
+        SavingsAccount acc = new SavingsAccount();
+        acc.generateAccountNumber();
+
+        System.out.println("Attempting to override a final method causes a compilation error.");
+    }
+}

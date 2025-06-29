@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class Vehicle {
+    String brand, model;
+    int year;
+
+    Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+}
+
+class Car extends Vehicle {
+    String fuelType;
+    int seatingCapacity;
+
+    Car(String brand, String model, int year, String fuelType, int seatingCapacity) {
+        super(brand, model, year);
+        this.fuelType = fuelType;
+        this.seatingCapacity = seatingCapacity;
+    }
+
+    void display() {
+        System.out.println("Brand: " + brand + ", Model: " + model + ", Year: " + year);
+        System.out.println("Fuel Type: " + fuelType + ", Seating Capacity: " + seatingCapacity);
+    }
+}
+
+public class Program1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter brand, model, year, fuelType, seatingCapacity: ");
+        String brand = sc.next();
+        String model = sc.next();
+        int year = sc.nextInt();
+        String fuelType = sc.next();
+        int seating = sc.nextInt();
+
+        Car car = new Car(brand, model, year, fuelType, seating);
+        car.display();
+    }
+}

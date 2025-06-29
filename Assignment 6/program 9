@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+class BankAccount {
+    int accNumber;
+    String holderName;
+    double balance = 0;
+
+    BankAccount(int accNumber) {
+        this.accNumber = accNumber;
+        this.holderName = "Unknown";
+    }
+
+    BankAccount(int accNumber, String name) {
+        this.accNumber = accNumber;
+        this.holderName = name;
+    }
+
+    void deposit(int amount) {
+        balance += amount;
+        System.out.println("Deposited int: " + amount);
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited double: " + amount);
+    }
+
+    void withdraw(int amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrew int: " + amount);
+        } else {
+            System.out.println("Insufficient funds.");
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrew double: " + amount);
+        } else {
+            System.out.println("Insufficient funds.");
+        }
+    }
+
+    void display() {
+        System.out.println("Account: " + accNumber + ", Name: " + holderName + ", Balance: $" + balance);
+    }
+}
+
+public class program9 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        BankAccount b1 = new BankAccount(sc.nextInt());
+        sc.nextLine();
+        BankAccount b2 = new BankAccount(sc.nextInt(), sc.nextLine());
+
+        b1.deposit(sc.nextInt());
+        b1.deposit(sc.nextDouble());
+
+        b1.withdraw(sc.nextInt());
+        b1.withdraw(sc.nextDouble());
+
+        b1.display();
+        b2.display();
+    }
+}

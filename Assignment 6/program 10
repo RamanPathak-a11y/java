@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+class ShapeDrawer {
+    void draw() {
+        System.out.println("Drawing shape");
+    }
+
+    void draw(String shapeName) {
+        System.out.println("Drawing: " + shapeName);
+    }
+
+    void draw(String shapeName, int size) {
+        System.out.println("Drawing: " + shapeName + " of size " + size);
+    }
+
+    void draw(String shapeName, int width, int height) {
+        System.out.println("Drawing: " + shapeName + " of width " + width + " and height " + height);
+    }
+}
+
+public class program10 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ShapeDrawer drawer = new ShapeDrawer();
+
+        drawer.draw();
+        drawer.draw(sc.nextLine());
+        drawer.draw(sc.nextLine(), sc.nextInt());
+        sc.nextLine();
+        drawer.draw(sc.nextLine(), sc.nextInt(), sc.nextInt());
+    }
+}

@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+class LibraryItem {
+    String title, publisher;
+    int year;
+
+    LibraryItem(String title, String publisher, int year) {
+        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+    }
+}
+
+class Book extends LibraryItem {
+    String author;
+
+    Book(String title, String publisher, int year, String author) {
+        super(title, publisher, year);
+        this.author = author;
+    }
+
+    void display() {
+        System.out.println("Book - Title: " + title + ", Author: " + author + ", Publisher: " + publisher + ", Year: " + year);
+    }
+}
+
+class Magazine extends LibraryItem {
+    int issueNumber;
+
+    Magazine(String title, String publisher, int year, int issueNumber) {
+        super(title, publisher, year);
+        this.issueNumber = issueNumber;
+    }
+
+    void display() {
+        System.out.println("Magazine - Title: " + title + ", Issue No: " + issueNumber + ", Publisher: " + publisher + ", Year: " + year);
+    }
+}
+
+class Newspaper extends LibraryItem {
+    String date;
+
+    Newspaper(String title, String publisher, int year, String date) {
+        super(title, publisher, year);
+        this.date = date;
+    }
+
+    void display() {
+        System.out.println("Newspaper - Title: " + title + ", Date: " + date + ", Publisher: " + publisher + ", Year: " + year);
+    }
+}
+
+public class Program7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Book details - title, publisher, year, author:");
+        String bookTitle = sc.next();
+        String bookPublisher = sc.next();
+        int bookYear = sc.nextInt();
+        String author = sc.next();
+        Book b = new Book(bookTitle, bookPublisher, bookYear, author);
+
+        System.out.println("Enter Magazine details - title, publisher, year, issue number:");
+        
+        String magTitle = sc.next();
+        String magPublisher = sc.next();
+        int magYear = sc.nextInt();
+        int issue = sc.nextInt();
+        Magazine m = new Magazine(magTitle, magPublisher, magYear, issue);
+
+        System.out.println("Enter Newspaper details - title, publisher, year, date :");
+        String newsTitle = sc.next();
+        String newsPublisher = sc.next();
+        int newsYear = sc.nextInt();
+        String date = sc.next();
+        Newspaper n = new Newspaper(newsTitle, newsPublisher, newsYear, date);
+
+        System.out.println("\n Library Items ");
+        b.display();
+        m.display();
+        n.display();
+    }
+}

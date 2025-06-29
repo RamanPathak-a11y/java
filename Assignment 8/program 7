@@ -1,0 +1,41 @@
+import java.util.Scanner;
+abstract class User {
+    String name;
+
+    User(String name) {
+        this.name = name;
+    }
+
+    abstract void login();
+}
+
+interface CourseContent {
+    void accessContent();
+}
+
+class Student extends User implements CourseContent {
+    Student(String name) {
+        super(name);
+    }
+
+    public void login() {
+        System.out.println(name + " logged into the platform.");
+    }
+
+    public void accessContent() {
+        System.out.println(name + " is accessing course content.");
+    }
+}
+
+public class program7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String studentName = sc.nextLine();
+
+        Student s = new Student(studentName);
+        s.login();
+        s.accessContent();
+
+        System.out.println("Abstract class provides partial implementation; interface provides contract only.");
+    }
+}

@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Program5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            try {
+                System.out.print("Enter numerator: ");
+                int a = sc.nextInt();
+
+                System.out.print("Enter denominator: ");
+                int b = sc.nextInt();
+
+                int result = a / b;
+                System.out.println("Result: " + result);
+            } catch (ArithmeticException e) {
+                System.out.println("ArithmeticException: " + e.getMessage());
+            }
+
+            try {
+                sc.nextLine();
+                System.out.print("Enter a string: ");
+                String input = sc.nextLine();
+
+                String str = input;
+                System.out.println("String length: " + str.length());
+            } catch (NullPointerException e) {
+                System.out.println("NullPointerException: " + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Outer catch block: " + e.getMessage());
+        }
+
+       
+    }
+}

@@ -1,0 +1,318 @@
+import java.util.Scanner;
+
+public class Main {
+    static Scanner sc = new Scanner(System.in);
+    static Movie[] movielist = new Movie[20];
+    static Booking[] bookinglist = new Booking[100];
+    static int totalmovies = 0;
+    static int totalbookings = 0;
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("---Movie Ticket Booking System---");
+            System.out.println("1. User Login");
+            System.out.println("2. Admin Login");
+            System.out.println("3. Exit");
+            System.out.println("Choose your option:");
+            try {
+                int input = sc.nextInt();
+                sc.nextLine();
+
+                switch (input) {
+                    case 1: {
+                        userLogin();
+                        break;
+                    }
+                    case 2: {
+                        adminLogin();
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("Thank you for using the system.");
+                        return;
+                    }
+                    default: {
+                        System.out.println("Invalid option. Try again.");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    static void userLogin() {
+        System.out.println("Enter your e-mail address:");
+        String emailinput = sc.nextLine();
+        if (checkEmail(emailinput)) {
+            userMenu(emailinput);
+        } else {
+            System.out.println("Invalid email format. Try again.");
+        }
+    }
+
+    static void adminLogin() {
+        System.out.println("Enter admin e-mail:");
+        String emailinput = sc.nextLine();
+        if (checkEmail(emailinput)) {
+            adminMenu(emailinput);
+        } else {
+            System.out.println("Invalid email format. Try again.");
+        }
+    }
+
+    static boolean checkEmail(String emailinput) {
+        if (emailinput == null) {
+            return false;
+        }
+        if (!emailinput.contains("@") || !emailinput.contains(".")) {
+            return false;
+        }
+        int at = emailinput.indexOf("@");
+        int dot = emailinput.lastIndexOf(".");
+        if (at > 0 && dot > at) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    static void userMenu(String userEmail) {
+        while (true) {
+            System.out.println("\n--- User Menu ---");
+            System.out.println("1. View list of movies");
+            System.out.println("2. Check movie details and show time");
+            System.out.println("3. Book movie seat");
+            System.out.println("4. Cancel booked ticket");
+            System.out.println("5. Back to Main Menu");
+            try {
+                int userchoice = sc.nextInt();
+                sc.nextLine();
+
+                switch (userchoice) {
+                    case 1: {
+                        if (totalmovies == 0) {
+                            System.out.println("No movies available.");
+                        } else {
+                            for (int i = 0; i < totalmovies; i++) {
+                                System.out.println((i + 1) + ". " + movielist[i].moviename);
+                            }
+                        }
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("Enter movie number:");
+                        int movienum = sc.nextInt();
+                        sc.nextLine();
+                        if (movienum > 0 && movienum <= totalmovies) {
+                            movielist[movienum - 1].showDetails();
+                        } else {
+                            System.out.println("Invalid movie number.");
+                        }
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("Enter movie number to book:");
+                        int bookingnum = sc.nextInt();
+                        sc.nextLine();
+                        if (bookingnum > 0 && bookingnum <= totalmovies) {
+                            movielist[bookingnum - 1].bookSeat(userEmail);
+                        } else {
+                            System.out.println("Invalid movie number.");
+                        }
+                        break;
+                    }
+                    case 4: {
+                        cancelBooking(userEmail);
+                        break;
+                    }
+                    case 5: {
+                        return;
+                    }
+                    default: {
+                        System.out.println("Invalid choice.");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Try again.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    static void adminMenu(String adminEmail) {
+        while (true) {
+            System.out.println("\n--- Admin Menu ---");
+            System.out.println("1. Add new movie");
+            System.out.println("2. Update movie details");
+            System.out.println("3. Delete movie");
+            System.out.println("4. View all bookings");
+            System.out.println("5. Back to Main Menu");
+            try {
+                int adminchoice = sc.nextInt();
+                sc.nextLine();
+
+                switch (adminchoice) {
+                    case 1: {
+                        if (totalmovies >= movielist.length) {
+                            System.out.println("Movie list full.");
+                        } else {
+                            System.out.println("Enter movie name:");
+                            String nameinput = sc.nextLine();
+                            System.out.println("Enter show time:");
+                            String timeinput = sc.nextLine();
+                            movielist[totalmovies++] = new Movie(nameinput, timeinput);
+                            System.out.println("Movie added.");
+                        }
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("Enter movie number to update:");
+                        int updateindex = sc.nextInt();
+                        sc.nextLine();
+                        if (updateindex > 0 && updateindex <= totalmovies) {
+                            System.out.println("Enter new name:");
+                            String newname = sc.nextLine();
+                            System.out.println("Enter new time:");
+                            String newtime = sc.nextLine();
+                            movielist[updateindex - 1].moviename = newname;
+                            movielist[updateindex - 1].movietime = newtime;
+                            System.out.println("Movie updated.");
+                        } else {
+                            System.out.println("Invalid movie number.");
+                        }
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("Enter movie number to delete:");
+                        int deleteindex = sc.nextInt();
+                        sc.nextLine();
+                        if (deleteindex > 0 && deleteindex <= totalmovies) {
+                            for (int i = deleteindex - 1; i < totalmovies - 1; i++) {
+                                movielist[i] = movielist[i + 1];
+                            }
+                            movielist[--totalmovies] = null;
+                            System.out.println("Movie deleted.");
+                        } else {
+                            System.out.println("Invalid movie number.");
+                        }
+                        break;
+                    }
+                    case 4: {
+                        if (totalbookings == 0) {
+                            System.out.println("No bookings yet.");
+                        } else {
+                            for (int i = 0; i < totalbookings; i++) {
+                                bookinglist[i].showBooking();
+                            }
+                        }
+                        break;
+                    }
+                    case 5: {
+                        return;
+                    }
+                    default: {
+                        System.out.println("Invalid option.");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    static void cancelBooking(String email) {
+        System.out.println("Enter movie name to cancel booking:");
+        String cancelname = sc.nextLine();
+        boolean found = false;
+        for (int i = 0; i < totalbookings; i++) {
+            if (bookinglist[i].useremail.equals(email) && bookinglist[i].movietitle.equals(cancelname)) {
+                for (int j = 0; j < totalmovies; j++) {
+                    if (movielist[j].moviename.equals(cancelname)) {
+                        movielist[j].bookedseats[bookinglist[i].seatnumber - 1] = false;
+                        break;
+                    }
+                }
+                bookinglist[i] = bookinglist[--totalbookings];
+                bookinglist[totalbookings] = null;
+                System.out.println("Booking cancelled.");
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No booking found.");
+        }
+    }
+
+    static class Movie {
+        String moviename;
+        String movietime;
+        boolean[] bookedseats = new boolean[50];
+
+        Movie(String moviename, String movietime) {
+            this.moviename = moviename;
+            this.movietime = movietime;
+        }
+
+        void showDetails() {
+            System.out.println("Movie: " + moviename);
+            System.out.println("Show time: " + movietime);
+            System.out.println("Seat Status:");
+            for (int i = 0; i < bookedseats.length; i++) {
+                if (bookedseats[i]) {
+                    System.out.print("BK" + (i + 1) + " ");
+                } else {
+                    System.out.print((i + 1) + " ");
+                }
+            }
+            System.out.println();
+        }
+
+        void bookSeat(String email) {
+            showDetails();
+            System.out.println("Enter seat number to book :");
+            try {
+                int seatinput = sc.nextInt();
+                sc.nextLine();
+                if (seatinput >= 1 && seatinput <= 50) {
+                    if (!bookedseats[seatinput - 1]) {
+                        for (int i = 0; i < totalbookings; i++) {
+                            if (bookinglist[i].useremail.equals(email)
+                                    && bookinglist[i].movietitle.equals(moviename)
+                                    && bookinglist[i].seatnumber == seatinput) {
+                                System.out.println("You have already booked this seat.");
+                                return;
+                            }
+                        }
+                        bookedseats[seatinput - 1] = true;
+                        bookinglist[totalbookings++] = new Booking(moviename, seatinput, email);
+                        System.out.println("Seat booked successfully.");
+                    } else {
+                        System.out.println("Seat already booked.");
+                    }
+                } else {
+                    System.out.println("Invalid seat number.");
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Booking cancelled.");
+                sc.nextLine();
+            }
+        }
+    }
+    static class Booking {
+        String movietitle;
+        int seatnumber;
+        String useremail;
+        Booking(String movietitle, int seatnumber, String useremail) {
+            this.movietitle = movietitle;
+            this.seatnumber = seatnumber;
+            this.useremail = useremail;
+        }
+        void showBooking() {
+            System.out.println("Movie: " + movietitle + ", Seat: " + seatnumber + ", User: " + useremail);
+        }
+    }
+}
